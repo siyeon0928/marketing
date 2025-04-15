@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>상황별 마케팅 카피 제안기</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Pretendard&display=swap');
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Pretendard', sans-serif;
+      background: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1600&q=80') no-repeat center center fixed;
+      background-size: cover;
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      background: rgba(255, 255, 255, 0.8);
+      border-radius: 24px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+      padding: 50px;
+      max-width: 600px;
+      width: 90%;
+      backdrop-filter: blur(8px);
+    }
+
+    h1 {
+      font-size: 32px;
+      margin-bottom: 24px;
+      text-align: center;
+      color: #1c3d58;
+    }
+
+    label {
+      display: block;
+      margin: 12px 0 4px;
+      font-weight: 500;
+    }
+
+    select, button {
+      width: 100%;
+      padding: 12px;
+      font-size: 16px;
+      border-radius: 12px;
+      border: 1px solid #ccc;
+      margin-bottom: 16px;
+    }
+
+    button {
+      background-color: #1c3d58;
+      color: white;
+      border: none;
+      font-weight: bold;
+      transition: 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #16455b;
+    }
+
+    .output {
+      margin-top: 20px;
+      font-size: 18px;
+      color: #333;
+      text-align: center;
+      line-height: 1.6;
+    }
+
+    .tag {
+      display: inline-block;
+      background-color: #a2c9de;
+      color: white;
+      padding: 5px 10px;
+      margin: 5px;
+      border-radius: 12px;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>상황별 마케팅 카피 제안기</h1>
+
+    <label for="situation">상황 선택</label>
+    <select id="situation" onchange="generateCopy()">
+      <option value="런칭">신제품 런칭</option>
+      <option value="SNS">SNS용 콘텐츠</option>
+    </select>
+
+    <label for="target">대상 선택</label>
+    <select id="target" onchange="generateCopy()">
+      <option value="10대">10대</option>
+      <option value="2030여성">2030 여성</option>
+      <option value="MZ">MZ 세대</option>
+      <option value="감성소비자">감성 소비자</option>
+    </select>
+
+    <label for="tone">분위기 선택</label>
+    <select id="tone" onchange="generateCopy()">
+      <option value="감성">감성</option>
+      <option value="시크">시크</option>
+      <option value="고급">고급스러움</option>
+      <option value="재치">재치있는</option>
+    </select>
+
+    <button onclick="generateCopy()">카피문구 생성</button>
+
+    <div class="output" id="output"></div>
+
+    <div>
+      <span class="tag">#엠지스타일</span>
+      <span class="tag">#느좋</span>
+      <span class="tag">#청량콘텐츠</span>
+      <span class="tag">#경험을팔자</span>
+      <span class="tag">#마케팅그이상</span>
+      <span class="tag">#콘텐츠감성</span>
+    </div>
+  </div>
+
+  <script>
+    function generateCopy() {
+      const situation = document.getElementById('situation').value;
+      const target = document.getElementById('target').value;
+      const tone = document.getElementById('tone').value;
+      
+      let copyText = '';
+
+      // 상황별 카피 예시
+      const copyExamples = {
+        '런칭': {
+          '10대': {
+            '감성': '새로운 시작, 우리가 함께 해요. 이제 널 기다리는 건 이 제품밖에 없어요!',
+            '시크': '너의 스타일은 이미 완성됐어, 이 신제품으로 한 단계 더! 놓치지 마.',
+            '고급': '10대도 고급스러움을 꿈꾼다. 세련된 선택, 지금 바로 만나보세요.',
+            '재치': '새로운 제품? 이미 10대들 사이에서 난리 났어! 당신도 늦기 전에 잡아.'
+          },
+          '2030여성': {
+            '감성': '따뜻한 변화, 너에게 꼭 맞는 신제품을 만나보세요. 삶을 바꾸는 힘!',
+            '시크': '이제는 2030 여성의 선택, 새로운 런칭으로 더 특별한 나로 변신.',
+            '고급': '당신만을 위한 고급스러운 런칭, 지금 바로 만나보세요.',
+            '재치': '이젠 2030 여성을 위한 제품도 쏙쏙! 스타일도, 당신도 완벽하게!'
+          },
+          'MZ': {
+            '감성': '당신의 이야기가 시작되는 곳, 새로운 신제품과 함께.',
+            '시크': 'MZ세대, 신제품으로 스타일을 깔끔하게 완성해보세요. 이건 필수템!',
+            '고급': '세련된 MZ세대의 선택, 이 제품을 놓친다면 후회할걸?',
+            '재치': 'MZ세대도 눈이 반짝, 이 제품 놓치면 진짜 아쉽지! 지금 확인해보세요.'
+          },
+          '감성소비자': {
+            '감성': '당신의 감성, 이 신제품과 함께 더욱 빛날 거예요. 놓치지 마세요!',
+            '시크': '감성의 완성, 신제품으로 더욱 깊이 있는 나를 만들어보세요.',
+            '고급': '고급스러움과 감성이 만나, 당신만을 위한 특별한 신제품.',
+            '재치': '감성 소비자? 이 신제품은 당신을 위한 거! 이미 다들 인정했잖아요.'
+          }
+        },
+        'SNS': {
+          '10대': {
+            '감성': '따뜻한 감성, SNS에서 만나세요. 우리 제품으로 감동을 전해보세요.',
+            '시크': '10대들의 선택, 이 스타일! SNS에서 바로 확인해보세요.',
+            '고급': '고급스러운 스타일을 SNS에서 미리 만나보세요.',
+            '재치': 'SNS에서 더 핫한 신제품, 지금 바로 체크해보세요!'
+          },
+          '2030여성': {
+            '감성': '당신의 감성을 자극하는 SNS 콘텐츠, 놓치지 마세요!',
+            '시크': 'SNS에서 세련된 나를 보여주자. 이 스타일로 매력 어필!',
+            '고급': '세련된 2030 여성, SNS에서 더 고급스럽게 보여보세요.',
+            '재치': 'SNS에서 내가 바로 트렌드! 이 제품, 놓치지 마세요!'
+          },
+          'MZ': {
+            '감성': 'MZ세대, SNS에서 이 제품으로 감성을 공유해보세요.',
+            '시크': 'MZ세대의 스타일, SNS에서 더 빛나게 만들어보세요.',
+            '고급': 'SNS에서 MZ세대만의 고급스러움을 자랑하세요.',
+            '재치': '이 제품 SNS에서 보여주면 확실한 반응이 올걸? 지금 바로 체크!'
+          },
+          '감성소비자': {
+            '감성': '감성 소비자라면 SNS에서 이 제품을 놓칠 수 없죠!',
+            '시크': 'SNS에서 더 감성 넘치는 나를 표현하세요.',
+            '고급': '고급스러운 감성, SNS에서 더 특별하게 만들어보세요.',
+            '재치': 'SNS에서 이 감성을 보여줘야 할 시간! 지금 바로 확인!'
+          }
+        }
+      };
+
+      // 카피 예시 가져오기
+      if (copyExamples[situation] && copyExamples[situation][target] && copyExamples[situation][target][tone]) {
+        copyText = copyExamples[situation][target][tone];
+      } else {
+        copyText = '상황과 선택에 맞는 카피문구를 찾을 수 없습니다.';
+      }
+
+      // 결과 출력
+      document.getElementById('output').textContent = copyText;
+    }
+  </script>
+</body>
+</html>
